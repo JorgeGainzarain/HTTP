@@ -40,6 +40,7 @@ async function selectHost() {
                         saveConfigToFile();
                         console.log(`Added new host: ${name}`);
                         auxHosts[index] = url;
+                        r1.close()
                         resolve(url);
                     });
                 });
@@ -58,7 +59,7 @@ async function selectHost() {
             }
         });
     });
-
+    rl.close();
     return selectedOption;
 }
 
