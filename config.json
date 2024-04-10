@@ -13,22 +13,24 @@
   },
 
   "headers" : {
-    "Content-Type": "Indicates the media type of the request body",
-    "Accept": "Specifies the media types the client is willing to accept",
-    "Authorization": "Used to provide authentication credentials",
-    "User-Agent": "Provides information about the client application",
-    "Cache-Control": "Directs caching behavior",
-    "Location": "Specifies the URL to redirect the recipient to",
-    "ETag": "A unique identifier for a specific version of a resource",
-    "Last-Modified": "Indicates the date and time at which the origin server believes the resource was last modified",
-    "Content-Encoding": "Indicates the compression method used on the message body",
-    "Content-Language": "Describes the natural language(s) of the intended audience for the content",
-    "Content-Length": "Indicates the size of the response body",
-    "Transfer-Encoding": "Specifies the form of encoding used to safely transfer the resource to the user",
-    "Content-Disposition": "Indicates if the content is expected to be displayed inline in the browser or as an attachment to be downloaded",
-    "Host": "Specifies the domain name of the server (for virtual hosting)",
-    "Referer": "Indicates the source URL of the current request",
-    "Origin": "Indicates the origin of the request",
-    "Cookie": "Sends cookies from the client to the server"
+    "POST": {
+      "Content-Type": "Indicates the media type of the request body",
+      "Content-Encoding": "Indicates the compression method used on the message body",
+      "Content-Language": "Describes the natural language(s) of the intended audience for the content",
+      "Content-Length": "Indicates the size of the body"
+    },
+    "GET": {
+      "Accept": "Specifies the media types the client is willing to accept",
+      "Cookie": "Sends cookies from the client to the server",
+      "If-None-Match": "It's used to specify that the server should only return the resource if it has been modified since the provided ETag",
+      "If-Modified-Since": "Similar to If-None-Match but uses the resource's modification timestamp instead of an ETag."
+    },
+
+    "DELETE": {
+      "Authorization": "This header is used to include credentials for authenticating the client with the server",
+      "If-Match": "Compares ETags to check if a resource is unaltered; proceeds if matched, else returns 412",
+      "If-Unmodified-Since": "Checks if resource's modification time precedes a specified timestamp; proceeds if true, else returns 412."
+    } 
+    
   }
 }
