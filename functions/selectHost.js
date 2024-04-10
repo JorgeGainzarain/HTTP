@@ -58,7 +58,7 @@ async function selectHost() {
             }
         });
     });
-
+    rl.close();
     return selectedOption;
 }
 
