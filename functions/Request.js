@@ -1,4 +1,4 @@
-module.exports = function getRequest(host, method, path) {
+module.exports = async function getRequest(host, method, path) {
   const readline = require("readline");
   const config = require("../config.json");
   const validMethods = config.httpMethods
@@ -38,24 +38,39 @@ module.exports = function getRequest(host, method, path) {
     console.log("Avaiable headers for the method ", method, ":\n");
     let i = 0;
     let aux = [];
-    let header;
+    let header = "";
+    let extra = "";
     for (k in headers) {
       i++;
       aux.push(k);
       console.log(i, k, ":", headers[k]);
     }
-    rl.question("Select a header\n:", (answer) => {
-      if(answer > aux.lenght) {
-        header = "";
-      }
-      else {
-        header = aux[answer];
-      }
-    });
-    rl.question("Value for the header:", (answer) => {
-      return `${method} ${path} HTTP/1.1\r\nHost: ${host}\r\n${header} ${answer}\r\n`;
-    })
-
+    aux.push("");
+    console.log(i+1, "None")
     
+    
+    header = await new Promise((resolve) => {
+      rl.question("\nSelect a header\n:", (answer) => {
+        let selectedHeader = aux[parseInt(answer) - 1]; // Adjust index to array index
+        resolve(selectedHeader);
+      });
+    });
+    
+    if (header !== "") {
+      extra = await new Promise((resolve) => {
+        rl.question("Value for the header:", (answer) => {
+          resolve(": " + answer);
+        });
+      });
+    }
+    else {
+      extra = "";
+    }
+
+    //console.log(`${method} ${path} HTTP/1.1\r\nHost: ${host}\r\n${header}${extra}\r\n`);
+
+    rl.close();
+    return `${method} ${path} HTTP/1.1\r\nHost: ${host}\r\n${header}${extra}\r\n\r\n`;
+
   }
 }

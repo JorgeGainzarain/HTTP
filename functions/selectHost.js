@@ -40,7 +40,6 @@ async function selectHost() {
                         saveConfigToFile();
                         console.log(`Added new host: ${name}`);
                         auxHosts[index] = url;
-                        r1.close()
                         resolve(url);
                     });
                 });
@@ -53,14 +52,45 @@ async function selectHost() {
                     rl.close();
                     selectHost(); // Recursive call to restart function
                 });
-            } else {
+            } else if (answer > 0 && answer < index) {
                 host = auxHosts[answer];
                 resolve(host);
             }
+            else {
+                console.log("\nPlease select a valid index\n")
+                rl.close()
+                selectHost();
+            }
         });
     });
+
+    config.host = selectedOption;
+    await saveConfigToFile();
+
+    // Before returning we select the port 
+
+    const port = await new Promise((resolve) => {
+        const askPort = () => {
+            rl.question("Select the port: (Empty for default 80) ", (answer) => {
+                if (answer === "") {
+                    resolve(80); // Default port 80
+                } else if (isNaN(answer)) {
+                    console.log("Please enter a valid number.");
+                    askPort(); // Repeat the question
+                } else {
+                    resolve(parseInt(answer)); // Convert answer to number and resolve the promise
+                }
+            });
+        };
+    
+        askPort(); // Start asking for the port
+    });
+    
     rl.close();
-    return selectedOption;
+
+    console.log(port, selectedOption)
+
+    return [port,selectedOption];
 }
 
 function saveConfigToFile() {

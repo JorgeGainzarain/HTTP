@@ -7,11 +7,11 @@ const handleRequest = (data) => {
   const body = request.substring(bodyIndex + 4);
 
   const response = `HTTP/1.1 200 OK
-Content-Type: text/plain
-Connection: close
+  Content-Type: text/plain
+  Connection: close
 
-Echoing back your request body:
-${body}`;
+  Echoing back your request body:
+  ${body}`;
 
   return response;
 };
@@ -21,6 +21,7 @@ const server = net.createServer((socket) => {
 
   socket.on("data", (data) => {
     const response = handleRequest(data);
+    console.log("\n\n", response, "\n\n");
     socket.end(response);
   });
 

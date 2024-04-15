@@ -1,16 +1,16 @@
 const net = require("net");
 const menu = require("./functions/Menu.js")
-const port = 80;
 const selectHost = require("./functions/selectHost.js")
 
 const client = new net.Socket();
 
 selectHost()
 
-.then((host) => {
+.then((arr) => {
+  let port = arr[0];
+  let host = arr[1];
   client.connect(port, host, () => {
-    console.log("Connected to server");
-  
+    console.log("Connected to server ", host , ":", port);
     menuGestion(true);
   });
 })

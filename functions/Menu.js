@@ -2,7 +2,7 @@ const readline = require("readline");
 const getRequest = require('./Request.js');
 const config = require('../config.json');
 
-async function displayMenu(first) {
+async function displayMenu(first, host) {
 
     const rl = readline.createInterface({
         input: process.stdin,

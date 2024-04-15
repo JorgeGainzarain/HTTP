@@ -1,19 +1,19 @@
 {
-  "httpMethods": 
-  [
+  "httpMethods": [
     "GET",
     "HEAD",
     "POST",
     "PUT",
     "DELETE"
   ],
-
   "hosts": {
-    "alu136058": "alu136058.free.beeceptor.com"
+    "alu136058": "alu136058.free.beeceptor.com",
+    "example": "www.example.com",
+    "localhost": "localhost"
   },
-
-  "headers" : {
+  "headers": {
     "POST": {
+      "Authorization": "This header is used to include credentials for authenticating the client with the server",
       "Content-Type": "Indicates the media type of the request body",
       "Content-Encoding": "Indicates the compression method used on the message body",
       "Content-Language": "Describes the natural language(s) of the intended audience for the content",
@@ -25,12 +25,11 @@
       "If-None-Match": "It's used to specify that the server should only return the resource if it has been modified since the provided ETag",
       "If-Modified-Since": "Similar to If-None-Match but uses the resource's modification timestamp instead of an ETag."
     },
-
     "DELETE": {
       "Authorization": "This header is used to include credentials for authenticating the client with the server",
       "If-Match": "Compares ETags to check if a resource is unaltered; proceeds if matched, else returns 412",
       "If-Unmodified-Since": "Checks if resource's modification time precedes a specified timestamp; proceeds if true, else returns 412."
-    } 
-    
-  }
+    }
+  },
+  "host": "localhost"
 }
