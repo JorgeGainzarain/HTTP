@@ -1,3 +1,8 @@
 {
-    "broccoli" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgFWlNIvUIp-xyoRo0oUuc8EoyEwxJpY18SrM7PrbseA&s"
+    "broccoli" : {
+        "content": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgFWlNIvUIp-xyoRo0oUuc8EoyEwxJpY18SrM7PrbseA&s",
+        "etag": "",
+        "time_modify" : "",
+        "language" : ""
+    }
 }
