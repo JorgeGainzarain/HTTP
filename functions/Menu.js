@@ -45,7 +45,7 @@ async function displayMenu(first, host) {
         rl.close();
         return getRequest(config.host, method, path);;
     } 
-    else if (methodIndex === config.httpMethods.length + 1) 
+    else if (methodIndex === config.httpMethods.length + 1 || choice == "exit" || choice == "Exit") 
     {
         rl.close();
         return "exit";
