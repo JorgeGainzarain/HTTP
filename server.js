@@ -4,7 +4,8 @@ const handleRequest = (data) => {
   const request = data.toString();
 
   const bodyIndex = request.indexOf("\r\n\r\n");
-  const body = request.substring(bodyIndex + 4);
+  const body = request.substring(0, request.length - 4);
+
 
   const response = `HTTP/1.1 200 OK
   Content-Type: text/plain
@@ -12,6 +13,8 @@ const handleRequest = (data) => {
 
   Echoing back your request body:
   ${body}`;
+
+  console.log(body)
 
   return response;
 };
@@ -21,7 +24,7 @@ const server = net.createServer((socket) => {
 
   socket.on("data", (data) => {
     const response = handleRequest(data);
-    console.log("\n\n", response, "\n\n");
+    //console.log("\n\n", response, "\n\n");
     socket.end(response);
   });
 

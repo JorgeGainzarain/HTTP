@@ -28,6 +28,7 @@ client.on("data", (data) => {
 
 client.on("error", (err) => {
   console.log(err.name);
+  client.destroy();
 })
 
 // Handle the close event

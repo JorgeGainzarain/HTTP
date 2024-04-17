@@ -71,7 +71,7 @@ async function selectHost() {
 
     const port = await new Promise((resolve) => {
         const askPort = () => {
-            rl.question("Select the port: (Empty for default 80) ", (answer) => {
+            rl.question("Select the port: (Empty for default 80) :", (answer) => {
                 if (answer === "") {
                     resolve(80); // Default port 80
                 } else if (isNaN(answer)) {
@@ -88,7 +88,7 @@ async function selectHost() {
     
     rl.close();
 
-    console.log(port, selectedOption)
+    console.log("\nSelected:\nPort: ", port, "\nHost: ", selectedOption, "\n")
 
     return [port,selectedOption];
 }
