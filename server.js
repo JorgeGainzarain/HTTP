@@ -1,23 +1,6 @@
 const net = require("net");
-
-const handleRequest = (data) => {
-  const request = data.toString();
-
-  const bodyIndex = request.indexOf("\r\n\r\n");
-  const body = request.substring(0, request.length - 4);
-
-
-  const response = `HTTP/1.1 200 OK
-  Content-Type: text/plain
-  Connection: close
-
-  Echoing back your request body:
-  ${body}`;
-
-  console.log(body)
-
-  return response;
-};
+const handleRequest = require("./functions/handleRequest.js")
+const port = 80;
 
 const server = net.createServer((socket) => {
   console.log("Client connected");
@@ -25,7 +8,7 @@ const server = net.createServer((socket) => {
   socket.on("data", (data) => {
     const response = handleRequest(data);
     //console.log("\n\n", response, "\n\n");
-    socket.end(response);
+    socket.write(response);
   });
 
   socket.on("end", () => {
@@ -33,6 +16,6 @@ const server = net.createServer((socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log("Server listening on port 3000");
+server.listen(port, () => {
+  console.log("Server listening on port ", port);
 });
