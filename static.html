@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Endpoint Usage Guide</title>
+  <title>Resource Usage Guide</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,21 +18,24 @@
   </style>
 </head>
 <body>
-  <h1>Endpoint Usage Guide</h1>
-  <p>Welcome to the Endpoint Usage Guide. Here's how you can interact with the endpoints:</p>
+  <h1>Resource Usage Guide</h1>
+  <p>Welcome to the Resource Usage Guide. Here's how you can interact with the resources:</p>
   
-  <h2>GET Request:</h2>
-  <p>To retrieve information from an existing endpoint, use a GET request. If the endpoint exists, you will receive the resource content.</p>
+  <h2>GET or HEAD Request:</h2>
+  <p>To retrieve information from an existing resource, use a GET request. If the resource exists, you will receive the resource content.</p>
   
   <h2>PUT Request:</h2>
-  <p>To modify an existing resource, use a PUT request to the endpoint. Provide the updated data in the request body to make changes.</p>
+  <p>To modify an existing resource, use a PUT request to the resource. Provide the updated data in the request body to make changes.</p>
   
   <h2>DELETE Request:</h2>
-  <p>To delete an existing resource, use a DELETE request to the endpoint. This will remove the resource from the server.</p>
+  <p>To delete an existing resource, use a DELETE request to the resource. This will remove the resource from the server.</p>
   
   <h2>POST Request:</h2>
-  <p>To create a new resource, use a POST request to a non-existing endpoint. If the endpoint does not exist, the server will add the new resource.</p>
+  <p>To create a new resource, use a POST request to a non-existing resource. If the resource does not exist, the server will add the new resource.</p>
   
-  <p>Remember to include the necessary headers and data in your requests to interact with the endpoints effectively.</p>
+  <h2>List Resources:</h2>
+  <p>To view a list of all available resources, make a GET request to the /list endpoint. This will return a list of all resources and their descriptions.</p>
+  <br>
+  <p>Remember to include the necessary headers and data in your requests to interact with the resources effectively.</p>
 </body>
 </html>

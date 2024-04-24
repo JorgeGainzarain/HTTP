@@ -35,42 +35,46 @@ module.exports = async function getRequest(host, method, path) {
       output: process.stdout
     });
 
-    console.log("Avaiable headers for the method ", method, ":\n");
-    let i = 0;
-    let aux = [];
-    let header = "";
-    let extra = "";
-    for (k in headers) {
-      i++;
-      aux.push(k);
-      console.log(i, k, ":", headers[k]);
-    }
-    aux.push("");
-    console.log(i+1, "None")
-    
-    
-    header = await new Promise((resolve) => {
-      rl.question("\nSelect a header\n:", (answer) => {
-        let selectedHeader = aux[parseInt(answer) - 1]; // Adjust index to array index
-        resolve(selectedHeader);
-      });
-    });
-    
-    if (header !== "") {
-      extra = await new Promise((resolve) => {
-        rl.question("Value for the header:", (answer) => {
-          resolve(": " + answer);
-        });
-      });
-    }
-    else {
-      extra = "";
-    }
+    extra = await showHeaders()
 
     //console.log(`${method} ${path} HTTP/1.1\r\nHost: ${host}\r\n${header}${extra}\r\n`);
 
     rl.close();
     return `${method} ${path} HTTP/1.1\r\nHost: ${host}\r\n${header}${extra}\r\n\r\n`;
 
+  }
+}
+
+async function showHeaders() {
+  console.log("Avaiable headers for the method ", method, ":\n");
+  let i = 0;
+  let aux = [];
+  let header = "";
+  let extra = "";
+  for (k in headers) {
+    i++;
+    aux.push(k);
+    console.log(i, k, ":", headers[k]);
+  }
+  aux.push("");
+  console.log(i+1, "None")
+  
+  
+  header = await new Promise((resolve) => {
+    rl.question("\nSelect a header\n:", (answer) => {
+      let selectedHeader = aux[parseInt(answer) - 1]; // Adjust index to array index
+      resolve(selectedHeader);
+    });
+  });
+  
+  if (header !== "") {
+    extra = await new Promise((resolve) => {
+      rl.question("Value for the header:", (answer) => {
+        resolve(": " + answer);
+      });
+    });
+  }
+  else {
+    extra = "";
   }
 }
