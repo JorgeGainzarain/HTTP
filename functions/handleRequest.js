@@ -10,6 +10,9 @@ module.exports = function handleRequest(data) {
     const method = parts1[0];
     const path = parts1[1];
 
+    const host = parts[1].split(" ")[1];
+    console.log(host);
+
     const paths = path.substring(1).split("/");
 
     let content = "";
@@ -43,12 +46,12 @@ module.exports = function handleRequest(data) {
       break;
   
       case "POST" : {
-        if (!endpoint in endpoints) {
-            // ADD IT
-        }
-        else {
+        if (endpoint in endpoints) {
           numCode = 409;
           content = "The endpoint " + endpoint + " already exists."
+        }
+        else {
+          // ADD IT
         }
       }
       
