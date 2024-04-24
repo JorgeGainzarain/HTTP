@@ -1,8 +1,8 @@
 {
     "broccoli" : {
         "content": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgFWlNIvUIp-xyoRo0oUuc8EoyEwxJpY18SrM7PrbseA&s",
-        "etag": "",
-        "time_modify" : "",
-        "language" : ""
+        "etag": "Test",
+        "time_modify" : "Never",
+        "language" : "Spanish"
     }
 }
