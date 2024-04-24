@@ -11,7 +11,8 @@ module.exports = function handleRequest(data) {
     const path = parts1[1];
 
     const host = parts[1].split(" ")[1];
-    console.log(host);
+    
+    const numHeaders = parts.lenght - 2;
 
     const paths = path.substring(1).split("/");
 
@@ -30,7 +31,7 @@ module.exports = function handleRequest(data) {
       case "GET" : 
       case "HEAD" : {
         if (path == "/") {
-            // STATIC 
+            content = "Static"
         }
         else if (path == "/list") {
           content = JSON.stringify(endpoints, null, 2);
