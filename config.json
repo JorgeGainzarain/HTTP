@@ -28,5 +28,5 @@
       "If-Unmodified-Since": "Checks if resource's modification time precedes a specified timestamp; proceeds if true, else returns 412."
     }
   },
-  "host": "localhost"
+  "host": "www.example.com"
 }

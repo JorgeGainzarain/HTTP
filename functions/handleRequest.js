@@ -12,6 +12,8 @@ module.exports = function handleRequest(data) {
 
     const paths = path.substring(1).split("/");
 
+    let err = "";
+
     if (paths.length > 1) {
         // ERR PATH
         return;
@@ -30,7 +32,7 @@ module.exports = function handleRequest(data) {
             // SHOW IT
         }
         else {
-            message = "Error: the endpoint " + endpoint + " doesn't exists." 
+            err = "The endpoint " + endpoint + " doesn't exists." 
         }
       }
       break;
@@ -38,6 +40,9 @@ module.exports = function handleRequest(data) {
       case "POST" : {
         if (!endpoint in endpoints) {
             // ADD IT
+        }
+        else {
+          err = "The endpoint " + endpoint + " already exists."
         }
       }
       
@@ -47,6 +52,9 @@ module.exports = function handleRequest(data) {
         if (endpoint in endpoints) {
             // MODIFY
         }
+        else {
+          err = "The endpoint " + endpoint + " doesn't exists." 
+        }
       }
   
       break;
@@ -55,9 +63,23 @@ module.exports = function handleRequest(data) {
         if (endpoint in endpoints) {
             // DELETE
         }
+        else {
+          err = "The endpoint " + endpoint + " doesn't exists." 
+        }
       }
   
     }  
+
+    if (err != "") {
+      message = {
+        statusCode: 404,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: err }),
+      };
+    }
+    
   
     return message;
   };
