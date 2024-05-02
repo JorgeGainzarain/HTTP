@@ -10,15 +10,12 @@ selectHost()
   let port = arr[0];
   let host = arr[1];
   client.connect(port, host, () => {
-    console.log("Connected to server ", host , ":", port);
+    console.log("Connected to server", host + ":" + port);
+    menuGestion(true);
   });
 })
 
 // requests process
-
-client.on("connect", () => {
-  menuGestion(true);
-})
 
 client.on("data", (data) => {
   console.log("\n\nReceived:\n " + data.toString());
