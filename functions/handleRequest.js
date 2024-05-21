@@ -38,7 +38,7 @@ module.exports = function handleRequest(data) {
           case "GET":
           case "HEAD": {
               if (path === "/") {
-                  newContent = "Static";
+                  newContent = fs.readFileSync('static.html', 'utf8');
               } else if (path === "/list") {
                   newContent = JSON.stringify(endpoints, null, 2);
               } else if (endpoint in endpoints) {
@@ -110,10 +110,14 @@ module.exports = function handleRequest(data) {
 
 
 function parseHeaders(headersString) {
-  const headersArray = headersString.split("\r\n").map(header => header.split(":"));
-  const headers = {};
-  headersArray.forEach(([key, value]) => {
-    headers[key.trim()] = value.trim();
-  });
-  return headers;
-}
+    if (!headersString) {
+      return {}; 
+    }
+    
+    const headersArray = headersString.split("\r\n").map(header => header.split(":"));
+    const headers = {};
+    headersArray.forEach(([key, value]) => {
+      headers[key.trim()] = value.trim();
+    });
+    return headers;
+  }
