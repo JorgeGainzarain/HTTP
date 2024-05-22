@@ -30,7 +30,7 @@ new Promise((resolve) => {
     log('Client_Start', 'Client connected\n');
     console.log("Client connected");
   
-    socket.write("Cookie: CookieRandomText");
+    socket.write("Cookie:" + generateRandomString(10));
 
     socket.on("data", (data) => {
       const response = handleRequest(data);
@@ -60,3 +60,14 @@ new Promise((resolve) => {
     console.log("Server listening on port ", port);
   });
 })
+
+
+function generateRandomString(length) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}

@@ -5,4 +5,4 @@ module.exports = function buildHttpResponse(statusCode, contentType, content) {
            `Content-Length: ${contentLength}\r\n` +
            `\r\n` +
            `${content || ''}`;
-}
+}   

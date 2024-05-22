@@ -1,6 +1,8 @@
 const net = require("net");
-const menu = require("./functions/Menu.js")
-const selectHost = require("./functions/selectHost.js")
+const menu = require("./functions/Menu.js");
+const selectHost = require("./functions/selectHost.js");
+const config = require("./config.json");
+const fs = require('fs');
 
 const client = new net.Socket();
 
@@ -18,8 +20,16 @@ selectHost()
 // requests process
 
 client.on("data", (data) => {
-  console.log("\n\nReceived:\n " + data.toString());
-  menuGestion();
+  const dataStr = data.toString();
+
+  if(dataStr.startsWith("Cookie")) {
+    config.Cookie = dataStr.split(":")[1];
+    fs.writeFileSync('./config.json', JSON.stringify(config, null, 2));
+  }
+  else {
+    console.log("\n\nReceived:\n " + dataStr);
+    menuGestion();
+  }
 });
 
 client.on("error", (err) => {
