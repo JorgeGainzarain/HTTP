@@ -1,7 +1,7 @@
 {
   "broccoli": {
     "content": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgFWlNIvUIp-xyoRo0oUuc8EoyEwxJpY18SrM7PrbseA&s",
-    "content_type": "Image",
+    "content_type": "ImageURL",
     "etag": "Test",
     "time_modify": "Never",
     "language": "Spanish"
@@ -12,20 +12,6 @@
     "etag": "C",
     "time_modify": "2024-05-02T14:49:48.849Z",
     "language": "B"
-  },
-  "": {
-    "content": "",
-    "content_type": "",
-    "etag": "",
-    "time_modify": "2024-05-22T13:31:04.111Z",
-    "language": ""
-  },
-  "testEndpoint": {
-    "content": "Test Content 1",
-    "content_type": "application/json",
-    "etag": "Tag123",
-    "time_modify": "2024-05-22T13:32:35.306Z",
-    "language": ""
   },
   "newResource": {
     "content": "New res content",

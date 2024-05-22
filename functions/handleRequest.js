@@ -49,7 +49,19 @@ module.exports = function handleRequest(data) {
         if (path === "/") {
           newContent = fs.readFileSync('static.html', 'utf8');
         } else if (path === "/list") {
-          newContent = JSON.stringify(endpoints, null, 2);
+          // Retrieve the list of image names in the "resources" folder
+          const fs = require('fs');
+          const resourcePath = './resources';
+          let imageNames = [];
+      
+          fs.readdirSync(resourcePath).forEach(file => {
+              if (file.endsWith('.jpg') || file.endsWith('.png') || file.endsWith('.gif')) {
+                  imageNames.push(file);
+              }
+          });
+      
+          // Create a message with the image names
+          newContent = "Endpoints:\n" + JSON.stringify(endpoints, null, 2) + "\n\nImages in 'resources' folder:\n" + imageNames.join("\n");
         } else if (endpoint in endpoints) {
           newContent = JSON.stringify(endpoints[endpoint], null, 2);
         } else if (headers["Content-Type"] && headers["Content-Type"].startsWith("image/")) {
@@ -117,7 +129,20 @@ module.exports = function handleRequest(data) {
       }
       case "PUT": {
         if (endpoint in endpoints) {
-          endpoints[endpoint] = JSON.parse(content);
+          let etag = headers["Etag"] || "";
+          let language = headers["Content-Language"] || "";
+          let content_type = headers["Content-Type"] || "";
+          endpoints[endpoint] = { 
+            "content": content,
+            "content_type": content_type,
+            "etag": etag,
+            "time_modify": new Date(),
+            "language": language
+          };
+
+          const endpointsPath = PATH.join(__dirname, '..', 'resources', "endpoints.json");
+
+          fs.writeFileSync(endpointsPath, JSON.stringify(endpoints, null, 2));
           newContent = "Endpoint " + endpoint + " modified successfully.";
         } else {
           numCode = "404 Not Found";

@@ -278,3 +278,154 @@ Content-Type: application/json
 Content-Length: 41
 
 The image newImage2 deleted successfully.
+2024-05-22T15:13:06.531Z [START]: Server listening on port 80
+2024-05-22T15:13:10.147Z [CLIENT_START]: Client connected
+
+2024-05-22T15:16:40.000Z [START]: Server listening on port 80
+2024-05-22T15:16:45.002Z [CLIENT_START]: Client connected
+
+2024-05-22T15:18:00.041Z [START]: Server listening on port 80
+2024-05-22T15:18:03.446Z [CLIENT_START]: Client connected
+
+2024-05-22T15:18:31.597Z [REQUEST]: Received request: PUT /testEndpoint HTTP/1.1
+Host: localhost
+API_KEY:ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+Cookie:HU7FUMohYG
+Content-Type: newContentType
+Content-Language: newLanguage
+Etag: newTag
+
+new COntent message
+
+
+2024-05-22T15:18:31.597Z [REQUEST]: Sent response: HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 44
+
+Endpoint testEndpoint modified successfully.
+2024-05-22T15:25:54.276Z [START]: Server listening on port 80
+2024-05-22T15:25:56.863Z [CLIENT_START]: Client connected
+
+2024-05-22T15:26:03.713Z [REQUEST]: Received request: GET /list HTTP/1.1
+Host: localhost
+API_KEY:ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+Cookie:NWZfvm46ZH
+
+
+2024-05-22T15:26:03.713Z [REQUEST]: Sent response: HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 42
+
+List of images in the 'resources' folder:
+
+2024-05-22T15:27:04.291Z [START]: Server listening on port 80
+2024-05-22T15:27:10.114Z [CLIENT_START]: Client connected
+
+2024-05-22T15:27:19.468Z [REQUEST]: Received request: GET /list HTTP/1.1
+Host: localhost
+API_KEY:ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+Cookie:1DcOxxtbjU
+
+
+2024-05-22T15:27:19.469Z [REQUEST]: Sent response: HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 609
+
+Endpoints:
+{
+  "broccoli": {
+    "content": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgFWlNIvUIp-xyoRo0oUuc8EoyEwxJpY18SrM7PrbseA&s",
+    "content_type": "ImageURL",
+    "etag": "Test",
+    "time_modify": "Never",
+    "language": "Spanish"
+  },
+  "Manzana": {
+    "content": "ABCDEF",
+    "content_type": "A",
+    "etag": "C",
+    "time_modify": "2024-05-02T14:49:48.849Z",
+    "language": "B"
+  },
+  "newResource": {
+    "content": "New res content",
+    "content_type": "",
+    "etag": "",
+    "time_modify": "2024-05-22T14:53:20.351Z",
+    "language": ""
+  }
+}
+
+Images in 'resources' folder:
+
+2024-05-22T15:27:44.003Z [REQUEST]: Received request: POST /testImage HTTP/1.1
+Host: localhost
+API_KEY:ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+Cookie:1DcOxxtbjU
+Content-Type: image/png
+
+ÿØÿà JFIF      ÿÛ  	( %!1!%)+...383-74-.+
+
+
+-7-.-----+--++--+-+++-+-+-++-++/++--+++-+-+1+--6+--ÿÀ  ¨," ÿÄ              ÿÄ J 		     !1AQa"qÒ2RTU¡±ÑS¤ÁÓð#BDEbÃ$3r£ÂáâãÿÄ             ÿÄ /        Q!1RðAa¡±ÑBáñ"#2SÿÚ   ? RUJ¢ÒTJº*vaW*È¥Yi*H¥IqQaY*ÈåYe*H¥IQ)Â¹Ö¬° :Éa^ëÖ>êÔVS°\]@ºX$àë¬XÈ..Á7 \`ºÀ`§§X.±
+¸quà,ÚiÄaÀÖÀ¶Ú0àk`w\F8¸â0à ¸¸qA´ÓDÎ ¸ÐèkBm¦¶!ÐÖÒ]ÚH{\é"¼©"VîÂTÊæTÊH¬°¨$R ·R ¸­8TÊ7Im*ÝÅeK¤Im*åTVXU:@t7AqRp¬tê,Ý :J
+×P¢ÉÒ¤{® ]E¤HòXW:u.AÂ½Ö¬}Ô¨20AÖiÖ:êÖ`¸ºÀu°MÀÇX.°(àÛ¬
+8à4à
+8ppÀ®F\pÁgv¸Ø,>R ¶$r¤ñ¢ã¿
+yPG*KPE*£
+yPG*PG,sHºXSËT/XåÅÒÕLèTÇðãKU3 Aq,r9cKU;ÇãT]-Tï\<p9\¥ªÐ ¸xà<r¢áj¦t*KcË®AªT*KiPG*
+ÜµU:HÝE¬¨#tåª­Ô¨³téãUc¨Qe*@!±j®u ë,]$r¤[Uî°cò¯N¾]Ké|°ØjEÀÙT¬[I¸ à:ëÖ,¤luÑ#WÑ® ¸íÄùÝQWX±·N!º¢¢N #Î ¸Y"éÐ>àiÀ®SÌ+] :7 ]eEÑØª8µuêEsO[:uªcñËgP¨¨¼5T<p%[J EÅâÑQ,r'\J¢9RT_)åE,râTJ¢ðÑO,r)c¤UE<¨#¼ª"Es2¤GäÕ÷IEv.[Õ&ÒëzjºéTy9»2Û+åSÛ·VÚÕE'¢}KæïFW?¢2ê8ßTWmXïMÁ½vÅ-5ÝãÏ¨æ²8½÷Ö£;:=oØÜ:Tßn	òD<.ÌÈ¾Ü/­Mé¬ã.Çæ¥£i=D³,JvF´Õ]$Üc4ÔwrM÷®®²f¹U3o']4í²kÌäß-cÕôøöÇâÁ½,³ÎÇ¤Þ»{4}¨­j·é­Ïvë-»uï|ÒjQI§%§fÖãªô¥Ï»¯¬Ë>Þ÷]Àø2¦ªÜ¶ØäëPæåÏFÞ¿ø.G×føJ'6Ô«QK{«§_¨ô.UªÖF2ÑëÏÓß¡­7>è·ìDëÖ<ëP/vuÑ8´6-_@Ùtc¢ro©9(·è<Ï+å]-²±>¾¾P\¿å*rqì=Ñ^	YìE>É3þU`õzãÊZé§n¾¿¬%ríZzeÄñGÃæûb÷ËÍrn¿OK>ÖiîTÿ ³éûoí½,{ãõ®F9®ôx½\2mküÛZuôÐs8ö)y²¬í¹S=×=yl~³»£ñ.¾}@<ªþ=§Ç¬ÿ ÒÛÏüZûdEï+\kôô{EG±Sñ¹¿èÚ~ËÙe|\ ¿Äyøððó¢yE<*Ç×
+ùöô¾_YeÀc×lu}Ñz}¨Î¯g·O}Ï^m)çô½Y]sôÉòkøõþN&>Oã>º­õ°KîÂàðêIøY
+lkéq1ª-Çê/Ý¬[¯£¨écÙ(¿CFÛ+jèãðcøFKìD¾ú_Æ3WFRm°÷×û?O%ÒqnL0yKøÓñ4ò£ÞÚU¢fä¥ôG,¸÷¯¬¨ª£Ñ$\{Ñ²£Þ¨´È@O*=èy1ïEÄÈÒ6C6òcÞ¥ôi%¬*|«âËsëÔ«­&ÞâüïB<¿ÏtÜc¤§ÒW)lRçÉÁ÷jÖº¾Z«ÅqhÉ¯£¾*Q×Tÿ ¥ÞÇðNuºíR¡IÙ]r§&zÆ/îfÔÌáÉzÜÍQÑ|=ØBdAÊqsÝw-$iurZ·«+xÈ²-tRç:êÜ·lZkµk§S×Wªz³ù»#±OHIÃG^ºêÓ_B}%f'èªW¥bÛd¢¨¶\ùÅ.Qzõ¥¦¼ûu.2­ÑÝ*<[Të¦6Õ£ºËÎ¤¤´o¯w=;5Zóî¦r³Ú§¬£¤åß-¯×=_S}gMïHäd_Ê«¯e}ÒÖo]\»¥ÖrÐ^Tfá]Ð6Ù\ØNrÖ-ë£{z%ØTD°ª­¼è£BR²N)orÙ'¯(ö%Ë³Àµ¾MxÕôpÖZ·'-#Ûð%Zîa¤Q-â¸r¤),Ïµ òü>Ô\Q)´rÈRY~¬à¾±é)´»=Ê©ù~gèÄ^~åT|áú0=:ÊÅ¬§Á}§Ów«hµn{Þg/rÊ>_ÿ 7 %îWù<ì¯¦¨3Ò%à¾ }çÔ¾¤_¼Üñ/×Gÿ ²VvJôU_âb÷0«³eú¸þ'£{Ñw%è4ñCÞ®x¾ÃßGOÜÎ¥×Ä2½TÙ½8åú¸ûG£Kxý`:<
+j¹âû}~½Îbº¸_«KþâXû¿²ôåÏoo£w îÝ_PQ¯À~ósÅö>}U~DYÅsWøö'¯ÉÎ/ô×÷Èë¥Q¸U¡ß®i¨¾råù_;eú¿EäZþÖÉåßC:µ'¿~Ö|çòå9:Zý8´?Úcòo/ç;?ÊQøC@´Õ|¼£ð­c¬ùËYoûNÅèÄ§ñ1y;¿´¤ý8tþ'LÐ,¨½_¨¤u9soe|áú~Ðà9?.ù8ûgHÙµú-#çç.rÎòè¯F$Wúòò{'åÿ «ô:yHÒ/Wê ¦Ý3üË Èùwêï÷È¯ëþb_¼:IH¸¿__¤'S.}ð[þVæï¥ÁmùWýíò"¤_¯¯Ò6¨õ2ççÁ®ìÊ^¥¿õ­à×?ëKUÕüËöËùÉ«õðÑêeÊe`Î³¤ÉÛ¶r«kX¤õp{ù¾]^¢*Ì,w¨ªÂ«Îzk(E=ÚEµÙ÷8§É¤×jgñJ'lðå9,Y9dA$¼ù(=ý*)ú5+¦-Å8Ûð9NÛ)¨ô|U¹ùº$¤¼ý%Ý®ÓÃg8©Ã";dµèdµ]áçã6Oà¥]Q¦-:IÆ)>}[yuxsÂò&¸ÆjQ|±oÚû×ñ¡TÜª;n>¾\.ßGÔËÛ\2ßËÇÕKÛÀâUdjª÷Ü_5×£4uiÇD÷}Õ?Éü´}T½³OOò±õoÚ,Ú¢ù*ê:z+åcêß´ò|ÿ +Tý¢Å Zò:z=úHQÈÏÕÑÜpÃ-9 äª$ 8äsEj¬a­Ý¨Ú¬h@JÔG+G¡ìcq§!WháñÊDR³¸	\T[ÀsÄr¼¸¶[Èå1Y_âFï*-ÌÊÂ9LZwÊò¢Ñnjr!Å¥y¯.-æ'""	\G+KeºiÈÈVÎò¢Ý,¦y÷¹*ûáþP²ïz6×ØuÙYlßt_ÜrÇÝe²ø[ìFÖÕÊ³V]LÖ=0Ñé¤ìô©(óúûD«Äôë;<ZÕ7£q­CÇH1-Zæ8¥Eä÷XÎsrÝ9EE>¤£É¿µ2dj@¹«XÄF mÀrÈx wÜ2ËÝå`ÑY^C;Ï&(jvWÊá^E+Êgò¼YÈ"Aqh¶XK Yt²¥\Z,¥G,²Y$RÉ.-ËIdË$«IÉ.,ëG²J§G,¢¢ÉnµI²J¹d¼âÑn´I²
+¹d,ñë9dË ¬H ®1ºÉÞG,¹Þ¯ºÁÞG+Äänñè[À;]à;¡nrÜ¥}yêRÓQ^){PåâsøyKWÞÈª1%»§Ë·Ìen¿î»;ÐeîñBo'ÍÐ& ¶=Ãò6ÆQø¬bÕ®wóøÑ ¯-êÉ;_ªÔÓ´«Â¿X"wa¬R66ì4ìvé¨Ø×Hkx¯HfðÔlö©ÞE+Ägyï8bÛ|äÈä¼Ò-OÏ$Y%|¯!æl¶XK y[;ÈýòVÙg+Hgh¾Èç8¦DÌA²'q¸Ö)FOË x¸pðY<ïÞ"íÚ<O;Àw	;@vN»w»@v']à;Ý »C'À;Ý »CÐ]¢nÓ] ¥Ëè´s3{dý%ü¦SeWç6er[®÷ ½×sa¸i-lyU<¥®ßÚB¥ÖQ¢rK¬+üÔÕ;kBÖätQ==!­äÍo(dÆó[Å÷¸/Wä¼JwNó¥Ñ¼wÎâ\\Adäï!âs¸W	ÉÉ\G+Ä¥i´¢ÉÉ\®v+FY8îÜ$ìØuÜ¸MØ°&ÝÀ»» Û´h£°×H,vívìNÀ]ÛÍ9Aa®]ÌáeØk¤Ükp²¹ÙÌÆ§Bó¬°Y3 ¬ê4«­	Ö*PÊ
+f÷q­Ä{nB]Æn"ÜfàÈw³¸wa-Jâ)\aE+H¥i³Håa°Ã ìØhÀ&Às0ÀsÌÃ sÌÙ¼æ,·ähÀÞ°ÙAÞfó Öó0FÖã[07lÃ 5©­L0	½LÜhÀ6n3S53S ÿÙ
+
+
+2024-05-22T15:27:44.004Z [REQUEST]: Sent response: HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 28
+
+Image uploaded successfully.
+2024-05-22T15:27:48.965Z [REQUEST]: Received request: GET /list HTTP/1.1
+Host: localhost
+API_KEY:ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+Cookie:1DcOxxtbjU
+
+
+2024-05-22T15:27:48.966Z [REQUEST]: Sent response: HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 622
+
+Endpoints:
+{
+  "broccoli": {
+    "content": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgFWlNIvUIp-xyoRo0oUuc8EoyEwxJpY18SrM7PrbseA&s",
+    "content_type": "ImageURL",
+    "etag": "Test",
+    "time_modify": "Never",
+    "language": "Spanish"
+  },
+  "Manzana": {
+    "content": "ABCDEF",
+    "content_type": "A",
+    "etag": "C",
+    "time_modify": "2024-05-02T14:49:48.849Z",
+    "language": "B"
+  },
+  "newResource": {
+    "content": "New res content",
+    "content_type": "",
+    "etag": "",
+    "time_modify": "2024-05-22T14:53:20.351Z",
+    "language": ""
+  }
+}
+
+Images in 'resources' folder:
+testImage.png
+2024-05-22T15:29:18.068Z [START]: Server listening on port 80
+2024-05-22T15:29:56.546Z [CLIENT_START]: Client connected
+
+2024-05-22T15:30:03.630Z [CLIENT_START]: Client connected
+
