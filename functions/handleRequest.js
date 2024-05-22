@@ -113,7 +113,7 @@ module.exports = function handleRequest(data) {
               "language": language
             };
             // Save the updated JSON to file
-            fs.writeFileSync("endpoints.json", JSON.stringify(endpoints, null, 2));
+            fs.writeFileSync(endpointsPath, JSON.stringify(endpoints, null, 2));
             newContent = "the endpoint " + endpoint + " added successfully";
           }
         }
