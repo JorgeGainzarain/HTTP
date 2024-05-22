@@ -7,11 +7,13 @@ let serverConfig = require("../serverConfig.json");
 let httpResponse = require("../functions/httpResponse.js");
 const fs = require('fs');
 const PATH = require('path');
+const log = require('../functions/logger.js');
 
 module.exports = function handleRequest(data) {
   const request = data.toString();
 
   console.log("\n\n", request, "\n\n");
+  log('info', `Handling request: ${request}`);
 
   const parts = request.split("\r\n\r\n");
   const bodyParts = parts[0].split("\r\n");
@@ -25,7 +27,8 @@ module.exports = function handleRequest(data) {
 
   const paths = path.substring(1).split("/");
 
-  
+  log('info', `Request details - Method: ${method}, Path: ${path}, Headers: ${JSON.stringify(headers)}, Content: ${content}`);
+
   console.log("Method:\n", method, "\nPath:\n", path.substring(1), "\nHeaders:\n" + JSON.stringify(headers, null, 2), "\nContent:\n", content);
   console.log();
 
@@ -143,7 +146,9 @@ module.exports = function handleRequest(data) {
       }
   }
 
-  return httpResponse(numCode, "application/json", newContent);
+  const response = httpResponse(numCode, "application/json", newContent);
+  log('info', 'Generated response: ${response}');
+  return response;
 };
 
 

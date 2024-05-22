@@ -29,5 +29,5 @@
     }
   },
   "API_KEY": "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
-  "host": "localhost"
+  "host": "www.example.com"
 }

@@ -1,6 +1,7 @@
 const net = require("net");
 const handleRequest = require("./functions/handleRequest.js")
 const readline = require("readline");
+const log = require('./functions/logger.js');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -26,12 +27,15 @@ new Promise((resolve) => {
 
 .then((port) => {
   const server = net.createServer((socket) => {
+    log('info', 'Client connected');
     console.log("Client connected");
   
     socket.on("data", (data) => {
       const response = handleRequest(data);
+      log('info', `Received request: ${data}`);
       //console.log("\n\n", response, "\n\n");
       socket.write(response);
+      log('info', `Sent response: ${response}`);
     });
   
     socket.on("error", (err) => {
@@ -45,10 +49,12 @@ new Promise((resolve) => {
 
     socket.on("end", () => {
       console.log("Client disconnected");
+      log('info', 'Client disconnected');
     });
   });
   
   server.listen(port, () => {
+    log('info', `Server listening on port ${port}`);
     console.log("Server listening on port ", port);
   });
 })
