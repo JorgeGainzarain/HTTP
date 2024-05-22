@@ -1,8 +1,12 @@
-const endpointsPath = "../endpoints.json"
+const endpointsPath = "../resources/endpoints.json"
 
 let endpoints = require(endpointsPath);
+const serverConfigPath = "../serverConfig.json";
+let serverConfig = require("../serverConfig.json");
+
 let httpResponse = require("../functions/httpResponse.js");
 const fs = require('fs');
+const PATH = require('path');
 
 module.exports = function handleRequest(data) {
   const request = data.toString();
@@ -28,6 +32,15 @@ module.exports = function handleRequest(data) {
   let newContent = "";
   let numCode = "200 OK";
 
+
+  // Check if the API_KEY is valid
+  if (!validateApiKey(headers)) {
+    numCode = "401 Unauthorized";
+    newContent = "Invalid API key.";
+    return httpResponse(numCode, "application/json", newContent);
+  }
+
+
   if (paths.length > 1) {
       numCode = "404 Not Found";
       newContent = "The endpoint " + path + " doesn't exist.";
@@ -50,27 +63,52 @@ module.exports = function handleRequest(data) {
               break;
           }
 
+          
           case "POST": {
-            if (endpoint in endpoints) {
-              numCode = "409 Conflict";
-              newContent = "The endpoint " + endpoint + " already exists.";
-            } 
+            if (headers["Content-Type"] && headers["Content-Type"].startsWith("image/")) {
+                try {
+                  const imageExtension = headers['Content-Type'].split('/')[1];
+                  const imageFileName = `image_${Date.now()}.${imageExtension}`;
+                  const imagePath = PATH.join(__dirname, '..', 'resources', imageFileName);
+              
+                  // Check if the image file already exists
+                  if (fs.existsSync(imagePath)) {
+                    numCode = "409 Conflict";
+                    newContent = "The image file already exists.";
+                  } else {
+                    // Save the image file to the server's resources folder
+                    fs.writeFileSync(imagePath, content, 'binary');
+              
+                    numCode = "200 OK";
+                    newContent = "Image uploaded successfully.";
+                  }
+                } catch (e) {
+                  numCode = "400 Bad Request";
+                  newContent = e.message;
+                }
+            }
             else {
-              let etag = headers["Etag"] || "";
-              let language = headers["Content-Language"] || "";
-              let content_type = headers["Content-Type"] || "";
-
-              // Store the content directly
-              endpoints[endpoint] = { 
-                "content": content,
-                "content_type": content_type,
-                "etag": etag,
-                "time_modify": new Date(),
-                "language": language
-              };
-              // Save the updated JSON to file
-              fs.writeFileSync("endpoints.json", JSON.stringify(endpoints, null, 2));
-              newContent = "the endpoint " + endpoint + " added succesfully";
+                if (endpoint in endpoints) {
+                numCode = "409 Conflict";
+                newContent = "The endpoint " + endpoint + " already exists.";
+                } 
+                else {
+                let etag = headers["Etag"] || "";
+                let language = headers["Content-Language"] || "";
+                let content_type = headers["Content-Type"] || "";
+                    // Check if the request contains an image file
+                    // Store the content directly
+                    endpoints[endpoint] = { 
+                        "content": content,
+                        "content_type": content_type,
+                        "etag": etag,
+                        "time_modify": new Date(),
+                        "language": language
+                    };
+                    // Save the updated JSON to file
+                    fs.writeFileSync("endpoints.json", JSON.stringify(endpoints, null, 2));
+                    newContent = "the endpoint " + endpoint + " added succesfully";
+                }
             }
             break;
           }
@@ -121,3 +159,18 @@ function parseHeaders(headersString) {
     });
     return headers;
   }
+
+  function validateApiKey(headers) {
+    const apiKey = headers["API_KEY"];
+    return serverConfig.API_KEYS.includes(apiKey);
+  }
+
+  // Watch for changes in the serverConfig.json file
+fs.watch(PATH.join(__dirname, serverConfigPath), (eventType, filename) => {
+    if (eventType === 'change') {
+      console.log('serverConfig.json file changed. Reloading...');
+      delete require.cache[require.resolve(serverConfigPath)];
+      serverConfig = require(serverConfigPath);
+      console.log('serverConfig reloaded successfully.');
+    }
+  });

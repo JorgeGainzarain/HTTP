@@ -34,6 +34,15 @@ new Promise((resolve) => {
       socket.write(response);
     });
   
+    socket.on("error", (err) => {
+      if (err.code === 'ECONNRESET') {
+        console.error("Client connection reset by peer");
+      } else {
+        console.error("Socket error:", err);
+      }
+      socket.end();
+    });
+
     socket.on("end", () => {
       console.log("Client disconnected");
     });
@@ -43,4 +52,3 @@ new Promise((resolve) => {
     console.log("Server listening on port ", port);
   });
 })
-

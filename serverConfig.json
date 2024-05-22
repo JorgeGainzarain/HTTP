@@ -1,0 +1,9 @@
+{
+    "API_KEYS": [
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+      "AnotherValidAPIKey123",
+      "YetAnotherValidKey456",
+      "12345",
+      "validKey"
+    ]
+  }

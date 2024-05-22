@@ -28,5 +28,6 @@
       "If-Unmodified-Since": "Checks if resource's modification time precedes a specified timestamp; proceeds if true, else returns 412."
     }
   },
+  "API_KEY": "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
   "host": "localhost"
 }
