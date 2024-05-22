@@ -19,7 +19,6 @@ selectHost()
 
 client.on("data", (data) => {
   console.log("\n\nReceived:\n " + data.toString());
-
   menuGestion();
 });
 

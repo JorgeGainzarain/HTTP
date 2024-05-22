@@ -19,6 +19,7 @@
     },
     "GET": {
       "Accept": "Specifies the media types the client is willing to accept",
+      "Content-Type": "Specify the content type of the desired resource, mandatory if searching for images",
       "If-None-Match": "It's used to specify that the server should only return the resource if it has been modified since the provided ETag",
       "If-Modified-Since": "Similar to If-None-Match but uses the resource's modification timestamp instead of an ETag."
     },
