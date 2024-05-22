@@ -127,7 +127,8 @@ module.exports = function handleRequest(data) {
       }
       case "DELETE": {
         if (headers["Content-Type"] && headers["Content-Type"].startsWith("image/")) {
-          const imagePath = PATH.join(__dirname, '..', 'resources', endpoint);
+          const imageExtension = headers['Content-Type'].split('/')[1];
+          const imagePath = PATH.join(__dirname, '..', 'resources', endpoint + "." + imageExtension);
           if (fs.existsSync(imagePath)) {
             fs.unlinkSync(imagePath);
             newContent = "The image " + endpoint + " deleted successfully.";

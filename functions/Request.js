@@ -47,8 +47,8 @@ module.exports = async function getRequest(host, method, path) {
       throw new Error(`Unsupported HTTP method: ${method}`);
     } else {
       let message = "API_KEY:" + config.API_KEY + "\r\n";
-      if(config.cookie != ""){
-        message += "Cookie:" + config.cookie + "\r\n";
+      if(config.Cookie != ""){
+        message += "Cookie:" + config.Cookie + "\r\n";
       }
       // Prompt for headers
       while (Object.keys(headers).length > 0) {

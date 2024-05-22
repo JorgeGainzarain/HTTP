@@ -25,11 +25,12 @@
     },
     "DELETE": {
       "Authorization": "This header is used to include credentials for authenticating the client with the server",
+      "Content-Type": "Specify the content type of the desired resource to delete, mandatory if searching for images",
       "If-Match": "Compares ETags to check if a resource is unaltered; proceeds if matched, else returns 412",
       "If-Unmodified-Since": "Checks if resource's modification time precedes a specified timestamp; proceeds if true, else returns 412."
     }
   },
   "API_KEY": "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
-  "Cookie": "RRRnYoFChN",
+  "Cookie": "ljqwmWw0zy",
   "host": "localhost"
 }
