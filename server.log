@@ -1,0 +1,19 @@
+2024-05-22T13:43:46.466Z [START]: Server listening on port 80
+2024-05-22T13:43:51.734Z [CLIENT_START]: Client connected
+2024-05-22T13:44:10.655Z [REQUEST]: Received request: GET /broccoli HTTP/1.1
+Host: localhost
+API_KEY:ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+Content-Type: application/json
+
+
+2024-05-22T13:44:10.655Z [REQUEST]: Sent response: HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 215
+
+{
+  "content": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgFWlNIvUIp-xyoRo0oUuc8EoyEwxJpY18SrM7PrbseA&s",
+  "content_type": "Image",
+  "etag": "Test",
+  "time_modify": "Never",
+  "language": "Spanish"
+}

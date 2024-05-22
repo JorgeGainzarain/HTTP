@@ -27,15 +27,15 @@ new Promise((resolve) => {
 
 .then((port) => {
   const server = net.createServer((socket) => {
-    log('info', 'Client connected');
+    log('Client_Start', 'Client connected\n');
     console.log("Client connected");
   
     socket.on("data", (data) => {
       const response = handleRequest(data);
-      log('info', `Received request: ${data}`);
+      log('REQUEST', `Received request: ${data}`);
       //console.log("\n\n", response, "\n\n");
       socket.write(response);
-      log('info', `Sent response: ${response}`);
+      log('REQUEST', `Sent response: ${response}`);
     });
   
     socket.on("error", (err) => {
@@ -49,12 +49,12 @@ new Promise((resolve) => {
 
     socket.on("end", () => {
       console.log("Client disconnected");
-      log('info', 'Client disconnected');
+      log('Client_END', 'Client disconnected');
     });
   });
   
   server.listen(port, () => {
-    log('info', `Server listening on port ${port}`);
+    log('START', `Server listening on port ${port}`);
     console.log("Server listening on port ", port);
   });
 })
