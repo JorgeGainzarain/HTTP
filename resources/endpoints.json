@@ -26,5 +26,12 @@
     "etag": "Tag123",
     "time_modify": "2024-05-22T13:32:35.306Z",
     "language": ""
+  },
+  "newResource": {
+    "content": "New res content",
+    "content_type": "",
+    "etag": "",
+    "time_modify": "2024-05-22T14:53:20.351Z",
+    "language": ""
   }
 }

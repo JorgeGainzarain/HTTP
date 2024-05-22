@@ -15,8 +15,8 @@ module.exports = function handleRequest(data) {
 
   const parts = request.split("\r\n\r\n");
   const bodyParts = parts[0].split("\r\n");
-  const headersString = bodyParts.slice(2).join("\r\n"); // Join the headers into a single string
-  const headers = parseHeaders(headersString); // Parse the headers into JSON format
+  const headersString = bodyParts.slice(2).join("\r\n");
+  const headers = parseHeaders(headersString); 
   const content = parts[1];
 
   const requestLine = bodyParts.shift().split(" ");
@@ -25,13 +25,11 @@ module.exports = function handleRequest(data) {
 
   const paths = path.substring(1).split("/");
 
-
   console.log("Method:\n", method, "\nPath:\n", path.substring(1), "\nHeaders:\n" + JSON.stringify(headers, null, 2), "\nContent:\n", content);
   console.log();
 
   let newContent = "";
   let numCode = "200 OK";
-
 
   // Check if the API_KEY is valid
   if (!validateApiKey(headers)) {
@@ -40,13 +38,11 @@ module.exports = function handleRequest(data) {
     return httpResponse(numCode, "application/json", newContent);
   }
 
-
   if (paths.length > 1) {
     numCode = "404 Not Found";
     newContent = "The endpoint " + path + " doesn't exist.";
   } else {
     const endpoint = paths[0];
-
     switch (method) {
       case "GET":
       case "HEAD": {
@@ -72,7 +68,6 @@ module.exports = function handleRequest(data) {
         }
         break;
       }
-
       case "POST": {
         if (headers["Content-Type"] && headers["Content-Type"].startsWith("image/")) {
           try {
@@ -111,13 +106,15 @@ module.exports = function handleRequest(data) {
               "language": language
             };
             // Save the updated JSON to file
+
+            const endpointsPath = PATH.join(__dirname, '..', 'resources', "endpoints.json");
+
             fs.writeFileSync(endpointsPath, JSON.stringify(endpoints, null, 2));
             newContent = "the endpoint " + endpoint + " added successfully";
           }
         }
         break;
       }
-
       case "PUT": {
         if (endpoint in endpoints) {
           endpoints[endpoint] = JSON.parse(content);
@@ -128,7 +125,6 @@ module.exports = function handleRequest(data) {
         }
         break;
       }
-
       case "DELETE": {
         if (headers["Content-Type"] && headers["Content-Type"].startsWith("image/")) {
           const imagePath = PATH.join(__dirname, '..', 'resources', endpoint);
@@ -148,18 +144,15 @@ module.exports = function handleRequest(data) {
         }
         break;
       }
-
       default: {
         numCode = "405 Method Not Allowed";
         newContent = "Method " + method + " is not allowed.";
       }
     }
   }
-
   const response = httpResponse(numCode, "application/json", newContent);
   return response;
 };
-
 
 function parseHeaders(headersString) {
   if (!headersString) {

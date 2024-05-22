@@ -8,29 +8,23 @@ async function selectHost() {
         input: process.stdin,
         output: process.stdout
     });
-
     if (typeof config.hosts !== 'object' || config.hosts === null) {
         console.error("Error: config.hosts is not a valid object.");
         rl.close();
         return;
     }
-
     console.log("Available hosts:");
     let index = 1;
-
     let auxHosts = [];
-
     for (const key in config.hosts) {
         auxHosts[index] = config.hosts[key];
         console.log(`${index}. ${key}: (${config.hosts[key]})`);
         index++;
     }
-    
     console.log(`${index}. Add a new host`);
     console.log(`${index + 1}. Remove a host`);
 
     let host = "";
-
     const selectedOption = await new Promise((resolve) => {
         rl.question("Select an option: ", (answer) => {
             if (answer == index) {
@@ -63,12 +57,9 @@ async function selectHost() {
             }
         });
     });
-
     config.host = selectedOption;
     await saveConfigToFile();
-
     // Before returning we select the port 
-
     const port = await new Promise((resolve) => {
         const askPort = () => {
             rl.question("Select the port: (Empty for default 80) :", (answer) => {
@@ -85,11 +76,8 @@ async function selectHost() {
     
         askPort(); // Start asking for the port
     });
-    
     rl.close();
-
     console.log("\nSelected:\nPort: ", port, "\nHost: ", selectedOption, "\n")
-
     return [port,selectedOption];
 }
 

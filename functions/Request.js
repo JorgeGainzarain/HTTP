@@ -30,14 +30,12 @@ module.exports = async function getRequest(host, method, path) {
         }
         break;
       }
-  
       // GET or HEAD
       case "GET":
       case "HEAD": {
         headers = { ...config.headers.GET };
         break;
       }
-  
       // DELETE 
       case "DELETE": {
         headers = { ...config.headers.DELETE };
@@ -48,7 +46,6 @@ module.exports = async function getRequest(host, method, path) {
     if (!validMethods.includes(method)) {
       throw new Error(`Unsupported HTTP method: ${method}`);
     } else {
-
       let message = "API_KEY:" + config.API_KEY + "\r\n";
       if(config.cookie != ""){
         message += "Cookie:" + config.cookie + "\r\n";
@@ -101,7 +98,6 @@ module.exports = async function getRequest(host, method, path) {
         message += selectedHeader + extra + "\r\n";
         delete headers[selectedHeader];
       }
-  
       // Prompt for content for POST or PUT method
       if (method === "POST" || method === "PUT") {
         
@@ -134,7 +130,6 @@ module.exports = async function getRequest(host, method, path) {
             message += "\r\n" + content + "\r\n";
         }
       }
-  
       rl.close();
       return `${method} ${path} HTTP/1.1\r\nHost: ${host}\r\n${message}\r\n`;
     }
@@ -143,13 +138,11 @@ module.exports = async function getRequest(host, method, path) {
   function deleteContentTypeHeader(message) {
     // Use a regular expression to match the entire Content-Type header row
     const contentTypeRegex = /Content-Type:.*\r?\n/;
-  
     // Check if the Content-Type header exists
     if (contentTypeRegex.test(message)) {
       // Replace the Content-Type header row with an empty string to delete it
       return message.replace(contentTypeRegex, '');
     }
-  
     // If Content-Type header doesn't exist, return the original message
     return message;
   }
