@@ -95,7 +95,7 @@ module.exports = function handleRequest(data) {
               // Save the image file to the server's resources folder
               fs.writeFileSync(imagePath, content, 'binary');
         
-              numCode = "200 OK";
+              numCode = "201 Created";
               newContent = "Image uploaded successfully.";
             }
           } catch (e) {
@@ -122,6 +122,7 @@ module.exports = function handleRequest(data) {
             const endpointsPath = PATH.join(__dirname, '..', 'resources', "endpoints.json");
 
             fs.writeFileSync(endpointsPath, JSON.stringify(endpoints, null, 2));
+            numCode = "201 Created";
             newContent = "the endpoint " + endpoint + " added successfully";
           }
         }
