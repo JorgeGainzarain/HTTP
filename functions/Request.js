@@ -50,7 +50,9 @@ module.exports = async function getRequest(host, method, path) {
     } else {
 
       let message = "API_KEY:" + config.API_KEY + "\r\n";
-  
+      if(config.cookie != ""){
+        message += "Cookie:" + config.cookie + "\r\n";
+      }
       // Prompt for headers
       while (Object.keys(headers).length > 0) {
         console.log("Available headers for the method", method, ":\n");

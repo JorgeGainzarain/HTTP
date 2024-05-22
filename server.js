@@ -30,6 +30,8 @@ new Promise((resolve) => {
     log('Client_Start', 'Client connected\n');
     console.log("Client connected");
   
+    socket.write("Cookie: CookieRandomText");
+
     socket.on("data", (data) => {
       const response = handleRequest(data);
       log('REQUEST', `Received request: ${data}`);
