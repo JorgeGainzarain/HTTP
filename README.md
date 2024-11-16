@@ -30,9 +30,7 @@ This project is a simple HTTP server designed to handle various types of request
 
 ## Installation
 1. Clone the repository:
-   `git clone https://github.com/JorgeGainzarain/HTTP.git`
 2. Navigate to the project directory:
-   `cd HTTP-1`
 3. Install any necessary dependencies (if applicable).
 
 ## Usage
