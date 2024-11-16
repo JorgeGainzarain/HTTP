@@ -1,4 +1,4 @@
-# HTTP-1 Server
+# HTTP Server
 
 ## Description
 This project is a simple HTTP server designed to handle various types of requests. It is implemented in Node.js and provides basic functionalities for handling GET, POST, PUT, and DELETE requests. The server is capable of serving static files, managing endpoints, and handling image uploads.
